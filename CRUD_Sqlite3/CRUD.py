@@ -43,7 +43,7 @@ def create():
         else:
             print('Entry already exists.')
             prompt = input('Do you want to try again? y/n: ')
-            if prompt != 'y':
+            if prompt == 'n':
                 creating = False
 
 
