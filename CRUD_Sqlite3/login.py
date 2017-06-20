@@ -1,4 +1,4 @@
-import User, sqlite3
+import User, sqlite3, getpass
 
 def create():
     creating = True
@@ -12,8 +12,8 @@ def create():
 
         if p == None:
             email = input('Type your e-mail: ').lower()
-            password = input('Type your password: ').lower()
-            check_pass = input('Type your password again: ').lower()
+            password = input('Type your password: ')
+            check_pass = input('Type your password again: ')
             if password == check_pass:
                 u = User.User(uname, email, password)
                 print('Please confirm the data before commiting:')
@@ -49,7 +49,7 @@ def login():
     loging = True
     while loging:
         uname = input('Username: ').lower()
-        password = input('Password: ').lower()
+        password = getpass.getpass()
         conn = sqlite3.connect('user.db')
         c = conn.cursor()
         c.execute('SELECT * FROM user WHERE uname = "{}" AND password = "{}"'.format(uname,
