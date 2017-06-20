@@ -1,4 +1,4 @@
-import login, User, CRUD, Person, sqlite3
+import login, User, CRUD, Person, export, sqlite3, csv
 
 def main():
     print('Welcome to PersonDB!\n')
@@ -21,29 +21,34 @@ def main():
                   'Type READ to search the database\n'+
                   'Type UPDATE to update a entry\n'+
                   'Type DELETE to remove a entry\n'+
+                  'Type EXPORT to export the db to a csv file\n'+
                   'Type EXIT to exit')
 
             command = input("Command: ").lower()
             print('\n')
 
-            if command == 'create' or command == 'c':
-              CRUD.create()
-              print('\n')
+            if command == 'create':
+                CRUD.create()
+                print('\n')
 
-            elif command == 'read' or command == 'r':
-              CRUD.read()
-              print('\n')
+            elif command == 'read':
+                CRUD.read()
+                print('\n')
 
-            elif command == 'update' or command == 'u':
-              CRUD.update()
-              print('\n')
+            elif command == 'update':
+                CRUD.update()
+                print('\n')
 
-            elif command == 'delete' or command == 'd':
-              CRUD.delete()
-              print('\n')
+            elif command == 'delete':
+                CRUD.delete()
+                print('\n')
 
-            elif command == 'exit' or command == 'e':
-              run = False
+            elif command == 'export':
+                export.export()
+                print('\n')
+                
+            elif command == 'exit':
+                run = False
 
             else:
                 print('Wrong input.')
