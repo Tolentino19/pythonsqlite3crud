@@ -8,16 +8,18 @@ def main():
     log = True
     logged = False
     while log:
-        prompt = input('Type LOGIN to log in or CREATE to create a new user: ').lower()
+        prompt = input('Type LOGIN to log in, CREATE to create a new user or EXIT to quit the program: ').lower()
         if prompt == 'login':
             try:
                 logged = login.login()
-                log = False
+                if logged:
+                    log = False
             except Exception as e:
                 logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
                                 ' - ' +
                                 str(e))
                 print('An ERROR has ocurred, please contact the admin.')
+                
         elif prompt == 'create':
             try:
                 login.create()
@@ -26,6 +28,10 @@ def main():
                                 ' - ' +
                                 str(e))
                 print('An ERROR has ocurred, please contact the admin.')
+
+        elif prompt == 'exit':
+            log = False
+            
         else:
             print('Wrong input.')
 
