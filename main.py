@@ -3,6 +3,12 @@ from datetime import datetime
 
 logging.basicConfig(filename='errors.log',level=logging.DEBUG)
 
+def error_report(e):
+    logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
+                    ' - ' +
+                    str(e))
+    print('An ERROR has ocurred, please contact the admin.')
+
 def main():
     print('Welcome to PersonDB!\n')
     log = True
@@ -15,19 +21,13 @@ def main():
                 if logged:
                     log = False
             except Exception as e:
-                logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                print('An ERROR has ocurred, please contact the admin.')
+                error_report(e)
                 
         elif prompt == 'create':
             try:
                 login.create()
             except Exception as e:
-                logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                print('An ERROR has ocurred, please contact the admin.')
+                error_report(e)
 
         elif prompt == 'exit':
             log = False
@@ -53,50 +53,35 @@ def main():
                     CRUD.create()
                     print('\n')
                 except Exception as e:
-                    logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                    print('An ERROR has ocurred, please contact the admin.')
+                    error_report(e)
 
             elif command == 'read':
                 try:
                     CRUD.read()
                     print('\n')
                 except Exception as e:
-                    logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                    print('An ERROR has ocurred, please contact the admin.')
+                    error_report(e)
 
             elif command == 'update':
                 try:
                     CRUD.update()
                     print('\n')
                 except Exception as e:
-                    logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                    print('An ERROR has ocurred, please contact the admin.')
+                    error_report(e)
 
             elif command == 'delete':
                 try:
                     CRUD.delete()
                     print('\n')
                 except Exception as e:
-                    logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                    print('An ERROR has ocurred, please contact the admin.')
+                    error_report(e)
 
             elif command == 'export':
                 try:
                     export.export('a', 'exported-data.csv', '')
                     print('\n')
                 except Exception as e:
-                    logging.warning(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+
-                                ' - ' +
-                                str(e))
-                    print('An ERROR has ocurred, please contact the admin.')
+                    error_report(e)
                 
             elif command == 'exit':
                 run = False
