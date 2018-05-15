@@ -64,7 +64,7 @@ def read():
                 person = Person.Person(p[0], p[1], p[2], p[3], p[4])
                 print(person)
 
-                clip.copy(str(person))
+                #clip.copy(str(person))
                 
                 conn.close()
                 reading = False

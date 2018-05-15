@@ -90,7 +90,7 @@ def main():
                 print('Wrong input.')
                 prompt = input('Do you want to try again? y/n: ')
                 if prompt == 'n':
-                    creating = False
+                    run = False
 
 
 if __name__ == '__main__':
